@@ -1,6 +1,6 @@
 # Simple Docker rsyslog Server
 
-Very basic, will listen on 514/udp and write to /var/log/syslog
+Very basic, will listen on 514/udp and write to /var/log/syslog and start a lnav session to view the logs.
 
 1. Build
 ```

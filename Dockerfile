@@ -1,16 +1,23 @@
 # Use the official Ubuntu base image
 FROM ubuntu:22.04
 
-# Update packages and install rsyslog
+
+# Update packages and install rsyslog and utilities
 RUN apt-get update && \
-    apt-get install -y rsyslog && \
+    apt-get install -y rsyslog moreutils lnav && \
     rm -rf /var/lib/apt/lists/*
 
 # Expose the default syslog port
 EXPOSE 514/udp
 
-# Copy custom rsyslog config file
+# Copy the custom rsyslog config file
 COPY rsyslog.conf /etc/rsyslog.conf
 
-# Start rsyslog in the foreground
-CMD ["rsyslogd", "-n"]
+# Create the log directory and ensure the log file exists
+RUN mkdir -p /var/log && touch /var/log/syslog.log
+
+# Start rsyslog in the foreground and tail the log file
+# CMD ["sh", "-c", "rsyslogd -n & tail -f /var/log/syslog.log"]
+
+
+CMD ["sh", "-c", "rsyslogd -n & lnav /var/log/syslog.log"]
