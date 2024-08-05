@@ -8,8 +8,15 @@ docker build -t simple-syslog-server .
 ```
 
 2. Run
+
 ```
 docker run -d --name syslog-server -p 514:514/udp simple-syslog-server
+```
+
+A convenience script `run.bash` is also provided to run the container.
+
+```
+bash run.bash
 ```
 
 3. Test
