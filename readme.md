@@ -12,7 +12,13 @@ docker build -t simple-syslog-server .
 docker run -d --name syslog-server -p 514:514/udp simple-syslog-server
 ```
 
-3. Customize
+3. Test
+
+```
+logger -n <your-docker-host-ip> -P 514 -d -t test-app -p user.error "Test syslog message: lemon apple pear"
+```
+
+4. Customize
 
 
 Edit the `rsyslog.conf` file to change the configuration.
