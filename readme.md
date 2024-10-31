@@ -2,7 +2,7 @@
 
 Welcome to your all-in-one, minimal `rsyslog` server in Docker! This container listens on `514/udp` for syslog messages, writes them to `/var/log/syslog` 📄, and launches [`lnav`](https://lnav.org/) for a live view of incoming logs. Perfect for quick setups, testing, or getting visibility into logs in real-time! 🎬
 
-![rsyslog-server-docker running](rsyslog.gif)
+![rsyslog-server-docker running](img/rsyslog.gif)
 
 🌐 **Default Format**: Logs follow the standardized [`RFC 5242`](https://www.rfc-editor.org/rfc/rfc5424) format, but feel free to customize!
 
