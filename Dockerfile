@@ -15,6 +15,10 @@ COPY rsyslog.conf /etc/rsyslog.conf
 # Create the log directory and ensure the log file exists
 RUN mkdir -p /var/log && touch /var/log/syslog.log
 
-# Start rsyslog in the foreground and use lnav to display logs
-CMD ["sh", "-c", "rsyslogd -n & lnav /var/log/syslog.log"]
+# Copy our custom entrypoint script into the container
+COPY start-rsyslog.sh /start-rsyslog.sh
+RUN chmod +x /start-rsyslog.sh
+
+# Set the entrypoint to the custom script
+ENTRYPOINT ["/start-rsyslog.sh"]
 
